@@ -31,5 +31,5 @@ You can add shapes to the map instead of drawing things
 ![Screenshot](img/screenshots/screenshot-shapes.png)
 
 
-[Demo](https://www.beamerlabs.com/lab/gol/)
+[Demo](https://www.beamerlabs.com/lab/game-of-life/)
 

@@ -33,3 +33,13 @@ You can add shapes to the map instead of drawing things
 
 [Demo](https://www.beamerlabs.com/lab/game-of-life/)
 
+
+I'm a programmer with over 20 years of expirence programming, use these times as a bench mark:
+
+5 hours - Get it all working
+2 hours - clean up code, optimize
+1 hour - Write the documentation, deploy to git hub
+1 hour - Fix a few bugs
+30 min - Deploy to my website
+
+Total Time: 9hrs 30 min

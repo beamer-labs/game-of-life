@@ -69,11 +69,15 @@ function Game()
         
         this.gameOfLife.map.mapData = maps["beamer-labs"].mapData;
 
-        this.config.originX = this.utils.getScreenWidth()/2 - ((this.config.mapWidth * this.config.tileSize)/2);
-        this.config.originY = this.utils.getScreenHeight()/2- ((this.config.mapHeight * this.config.tileSize)/2);
+        this.gameOfLife.map.mapWidth = maps["beamer-labs"].mapWidth;
 
-        document.getElementById("txt-map-width").value = this.config.mapWidth;
-        document.getElementById("txt-map-height").value = this.config.mapHeight;
+        this.gameOfLife.map.mapHeight = maps["beamer-labs"].mapHeight;
+
+        this.config.originX = this.utils.getScreenWidth()/2 - ((this.gameOfLife.map.mapWidth * this.gameOfLife.map.tileSize)/2);
+        this.config.originY = this.utils.getScreenHeight()/2- ((this.gameOfLife.map.mapHeight * this.gameOfLife.map.tileSize)/2);
+
+        document.getElementById("txt-map-width").value = this.gameOfLife.map.mapWidth;
+        document.getElementById("txt-map-height").value = this.gameOfLife.map.mapHeight;
 
         this.lastStartingMap = this.gameOfLife.cloneMap();
 
@@ -223,6 +227,7 @@ function Game()
 
         context.strokeText("Loop:" + this.processLoop.counter, drawX, drawY - 15);
         context.strokeText("Num Cells:" + this.numAlive, drawX + 75, drawY - 15);
+        context.strokeText("Map Dim:" + this.gameOfLife.map.mapWidth + "x" + this.gameOfLife.map.mapHeight, drawX + 150, drawY - 15);
 
         //context.strokeText("Ashes At Loop:" + this.stableLoopCount, drawX + 150, drawY - 15);
         for(var x =0;x<this.gameOfLife.map.mapWidth;x++)
@@ -357,38 +362,37 @@ function Game()
 
     this.growMap = function()
     {
-        this.config.mapWidth+= 10;
+        
+        this.gameOfLife.map.mapWidth+= 10;
 
-        this.config.mapHeight+=10;
+        this.gameOfLife.map.mapHeight+=10;
 
-
-        if(this.config.mapWidth > this.config.maxMapSize)
+        if(this.gameOfLife.map.mapWidth > this.config.maxMapSize)
         {
             alert("Max Map Sized Reached (" + this.config.maxMapSize + ")");
-            this.config.mapWidth = this.config.maxMapSize;
-            this.config.mapHeight = this.config.maxMapSize;
+            this.gameOfLife.map.mapWidth = this.config.maxMapSize;
+            this.gameOfLife.map.mapHeight = this.config.maxMapSize;
         }
 
-        this.loadMap();
+        this.gameOfLife.init();
 
     }
 
     this.shrinkMap = function()
     {
-        this.config.mapWidth-= 10;
+        this.gameOfLife.map.mapWidth-= 10;
 
-        this.config.mapHeight-=10;
+        this.gameOfLife.map.mapHeight-=10;
 
 
-        if(this.config.mapWidth < 25)
+        if(this.gameOfLife.map.mapWidth < 25)
         {
             alert("Min Map Sized Reached (25)");
-            this.config.mapWidth = 25;
-            this.config.mapHeight = 25;
+            this.gameOfLife.map.mapWidth = 25;
+            this.gameOfLife.map.mapHeight = 25;
         }
 
-        this.loadMap();
-
+        this.gameOfLife.init();
     }
 
     
